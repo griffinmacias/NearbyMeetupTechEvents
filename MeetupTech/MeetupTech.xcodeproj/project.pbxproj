@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB1A68BB1DB7CA9900E9E4DA /* MeetupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A68B91DB7CA9900E9E4DA /* MeetupTableViewCell.swift */; };
+		DB1A68BC1DB7CA9900E9E4DA /* MeetupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1A68BA1DB7CA9900E9E4DA /* MeetupTableViewCell.xib */; };
+		DB1A68BE1DB7CC7C00E9E4DA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A68BD1DB7CC7C00E9E4DA /* Models.swift */; };
 		DB9931761DB7ACD600FF5A9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9931751DB7ACD600FF5A9A /* AppDelegate.swift */; };
 		DB9931781DB7ACD600FF5A9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9931771DB7ACD600FF5A9A /* ViewController.swift */; };
 		DB99317B1DB7ACD600FF5A9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9931791DB7ACD600FF5A9A /* Main.storyboard */; };
@@ -20,6 +23,9 @@
 /* Begin PBXFileReference section */
 		52C2ADEF171422A7671F225D /* Pods-MeetupTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetupTech.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetupTech/Pods-MeetupTech.release.xcconfig"; sourceTree = "<group>"; };
 		9E920785CEEC8DE37C761758 /* Pods_MeetupTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetupTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB1A68B91DB7CA9900E9E4DA /* MeetupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupTableViewCell.swift; sourceTree = "<group>"; };
+		DB1A68BA1DB7CA9900E9E4DA /* MeetupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetupTableViewCell.xib; sourceTree = "<group>"; };
+		DB1A68BD1DB7CC7C00E9E4DA /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		DB9931721DB7ACD600FF5A9A /* MeetupTech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupTech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9931751DB7ACD600FF5A9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB9931771DB7ACD600FF5A9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,9 @@
 				DB9931771DB7ACD600FF5A9A /* ViewController.swift */,
 				DB9931871DB7AD6100FF5A9A /* Api.swift */,
 				DB9931891DB7B00A00FF5A9A /* Network.swift */,
+				DB1A68BD1DB7CC7C00E9E4DA /* Models.swift */,
+				DB1A68B91DB7CA9900E9E4DA /* MeetupTableViewCell.swift */,
+				DB1A68BA1DB7CA9900E9E4DA /* MeetupTableViewCell.xib */,
 				DB9931791DB7ACD600FF5A9A /* Main.storyboard */,
 				DB99317C1DB7ACD600FF5A9A /* Assets.xcassets */,
 				DB99317E1DB7ACD600FF5A9A /* LaunchScreen.storyboard */,
@@ -160,6 +169,7 @@
 				DB9931801DB7ACD600FF5A9A /* LaunchScreen.storyboard in Resources */,
 				DB99317D1DB7ACD600FF5A9A /* Assets.xcassets in Resources */,
 				DB99317B1DB7ACD600FF5A9A /* Main.storyboard in Resources */,
+				DB1A68BC1DB7CA9900E9E4DA /* MeetupTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB9931781DB7ACD600FF5A9A /* ViewController.swift in Sources */,
+				DB1A68BB1DB7CA9900E9E4DA /* MeetupTableViewCell.swift in Sources */,
 				DB9931881DB7AD6100FF5A9A /* Api.swift in Sources */,
+				DB1A68BE1DB7CC7C00E9E4DA /* Models.swift in Sources */,
 				DB99318A1DB7B00A00FF5A9A /* Network.swift in Sources */,
 				DB9931761DB7ACD600FF5A9A /* AppDelegate.swift in Sources */,
 			);

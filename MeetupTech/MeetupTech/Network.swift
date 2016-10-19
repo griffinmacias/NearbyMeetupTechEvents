@@ -13,7 +13,7 @@ final class Network {
     static let sharedInstance = Network()
     private init() {} //Prevents others from using the default () init
     func getTechEvents(latitude: Double, longitude: Double, completion: @escaping (Any) -> Void)  {
-        Alamofire.request(Api.url, parameters: ["key": Api.key, "category": Api.tech, "lat": latitude, "lon": longitude, "radius": Api.radius])
+        Alamofire.request(Api.url, parameters: ["key": Api.key, "category": Api.tech, "lat": latitude, "lon": longitude, "radius": Api.radius, "photo-host": Api.photoHost])
         .validate()
         .responseJSON { (response) in
             guard response.result.isSuccess else {

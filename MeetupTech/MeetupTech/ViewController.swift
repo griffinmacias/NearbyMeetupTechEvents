@@ -10,18 +10,27 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var meetupTableView: UITableView!
     let locationManager: CLLocationManager = CLLocationManager()
+    var meetups: [Meetup] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupLocationManager()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func setupLocationManager() {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
+    
     func fetchTechEvents(location: CLLocationCoordinate2D) {
         Network.sharedInstance.getTechEvents(latitude: location.latitude, longitude: location.longitude) { (events) in
             print("Ok in the vc we are getting events in! \(events)")
@@ -29,7 +38,24 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.meetups.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath)
+        return cell
+    }
+}
+
 extension ViewController: CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Locations! \(locations.last?.coordinate)")
         if let coordinate = locations.last?.coordinate {
