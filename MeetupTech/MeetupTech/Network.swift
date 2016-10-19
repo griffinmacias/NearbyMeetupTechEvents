@@ -20,8 +20,17 @@ final class Network {
                 print("Error while fetching results: \(response.result.error)")
                 return
             }
-            if let value = response.result.value {
+            if let value = response.result.value as? [String: Any] {
                 print("Value is in! \(value)")
+                if let json = value["results"] as? [Any] {
+                    for dict in json {
+                        if let meetupDict = dict as? [String: Any], let meetup = Meetup.init(json: meetupDict) {
+                            
+                        }
+                    }
+                } else {
+                    
+                }
                 completion(value)
             }
         }

@@ -10,10 +10,9 @@ import Foundation
 
 struct Meetup {
     var name: String
-    init?(json: [String: [String: String]]) {
-        guard let name = json["group"]?["name"] else {
-            return nil
-        }
+    init?(json: [String: Any]) {
+        guard let group = json["group"] as? [String: Any],
+            let name = group["name"] as? String else { return nil }
         self.name = name
     }
 }
