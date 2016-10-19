@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8i5-i9-rsO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Nearby Tech Meetups-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MeetupTech" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,18 +24,38 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oKA-QL-Cab" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9hW-gz-jqe"/>
-                            <constraint firstItem="oKA-QL-Cab" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="C6C-BN-c05"/>
-                            <constraint firstItem="oKA-QL-Cab" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Faf-bi-gKI"/>
-                            <constraint firstItem="oKA-QL-Cab" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="rUN-yY-LAV"/>
+                            <constraint firstItem="oKA-QL-Cab" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DRW-8k-ivD"/>
+                            <constraint firstItem="oKA-QL-Cab" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="J3X-yi-20K"/>
+                            <constraint firstItem="oKA-QL-Cab" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pjt-ZO-ZAD"/>
+                            <constraint firstItem="oKA-QL-Cab" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="eFr-DI-AMJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Nearby Tech Meetups" id="xDq-vY-4r8"/>
                     <connections>
                         <outlet property="meetupTableView" destination="oKA-QL-Cab" id="grr-Au-Aes"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="972" y="40.929535232383813"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Tv-yp-Je8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8i5-i9-rsO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SRd-Zw-Hk1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BDh-My-0TW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="onJ-1r-vIY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="40.929535232383813"/>
         </scene>
     </scenes>
 </document>
