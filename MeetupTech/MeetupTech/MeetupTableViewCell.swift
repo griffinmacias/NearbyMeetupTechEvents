@@ -9,7 +9,10 @@
 import UIKit
 
 class MeetupTableViewCell: UITableViewCell {
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var groupImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

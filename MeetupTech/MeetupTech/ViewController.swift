@@ -60,8 +60,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath) as! MeetupTableViewCell
         let meetup = self.meetups[indexPath.row]
-        cell.name.text = meetup.name
+        cell.nameLabel.text = meetup.name
+        cell.distanceLabel.text = String(format: "%.2f", meetup.distance) + " mi"
+        cell.addressLabel.text = "\(meetup.venue?.name ?? "TBA")"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 115
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
     }
 }
 
