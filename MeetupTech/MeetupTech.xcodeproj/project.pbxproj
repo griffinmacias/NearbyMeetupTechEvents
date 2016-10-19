@@ -12,11 +12,14 @@
 		DB99317B1DB7ACD600FF5A9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9931791DB7ACD600FF5A9A /* Main.storyboard */; };
 		DB99317D1DB7ACD600FF5A9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB99317C1DB7ACD600FF5A9A /* Assets.xcassets */; };
 		DB9931801DB7ACD600FF5A9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB99317E1DB7ACD600FF5A9A /* LaunchScreen.storyboard */; };
-		DB9931881DB7AD6100FF5A9A /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9931871DB7AD6100FF5A9A /* ApiKey.swift */; };
+		DB9931881DB7AD6100FF5A9A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9931871DB7AD6100FF5A9A /* Api.swift */; };
 		DB99318A1DB7B00A00FF5A9A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9931891DB7B00A00FF5A9A /* Network.swift */; };
+		F8B7BE8BA56184D00F10F6CA /* Pods_MeetupTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E920785CEEC8DE37C761758 /* Pods_MeetupTech.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52C2ADEF171422A7671F225D /* Pods-MeetupTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetupTech.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetupTech/Pods-MeetupTech.release.xcconfig"; sourceTree = "<group>"; };
+		9E920785CEEC8DE37C761758 /* Pods_MeetupTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetupTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9931721DB7ACD600FF5A9A /* MeetupTech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupTech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9931751DB7ACD600FF5A9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB9931771DB7ACD600FF5A9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,8 +27,9 @@
 		DB99317C1DB7ACD600FF5A9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB99317F1DB7ACD600FF5A9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB9931811DB7ACD600FF5A9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB9931871DB7AD6100FF5A9A /* ApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		DB9931871DB7AD6100FF5A9A /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		DB9931891DB7B00A00FF5A9A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		F82783C3F700E91EE2632C93 /* Pods-MeetupTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetupTech.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetupTech/Pods-MeetupTech.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B7BE8BA56184D00F10F6CA /* Pods_MeetupTech.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B3F7E47195158E0F73B5647 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F82783C3F700E91EE2632C93 /* Pods-MeetupTech.debug.xcconfig */,
+				52C2ADEF171422A7671F225D /* Pods-MeetupTech.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DB9931691DB7ACD600FF5A9A = {
 			isa = PBXGroup;
 			children = (
 				DB9931741DB7ACD600FF5A9A /* MeetupTech */,
 				DB9931731DB7ACD600FF5A9A /* Products */,
+				6B3F7E47195158E0F73B5647 /* Pods */,
+				E04E272AC7FA5F8B26855A5E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,7 +76,7 @@
 			children = (
 				DB9931751DB7ACD600FF5A9A /* AppDelegate.swift */,
 				DB9931771DB7ACD600FF5A9A /* ViewController.swift */,
-				DB9931871DB7AD6100FF5A9A /* ApiKey.swift */,
+				DB9931871DB7AD6100FF5A9A /* Api.swift */,
 				DB9931891DB7B00A00FF5A9A /* Network.swift */,
 				DB9931791DB7ACD600FF5A9A /* Main.storyboard */,
 				DB99317C1DB7ACD600FF5A9A /* Assets.xcassets */,
@@ -70,6 +86,14 @@
 			path = MeetupTech;
 			sourceTree = "<group>";
 		};
+		E04E272AC7FA5F8B26855A5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E920785CEEC8DE37C761758 /* Pods_MeetupTech.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB9931841DB7ACD600FF5A9A /* Build configuration list for PBXNativeTarget "MeetupTech" */;
 			buildPhases = (
+				03A00630E8DA6AE8C5FDA89B /* [CP] Check Pods Manifest.lock */,
 				DB99316E1DB7ACD600FF5A9A /* Sources */,
 				DB99316F1DB7ACD600FF5A9A /* Frameworks */,
 				DB9931701DB7ACD600FF5A9A /* Resources */,
+				44FC8FF0061041D60A6D06DE /* [CP] Embed Pods Frameworks */,
+				578C2E4C8794E3F9DFB82FE0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,13 +165,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03A00630E8DA6AE8C5FDA89B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		44FC8FF0061041D60A6D06DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetupTech/Pods-MeetupTech-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		578C2E4C8794E3F9DFB82FE0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetupTech/Pods-MeetupTech-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DB99316E1DB7ACD600FF5A9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DB9931781DB7ACD600FF5A9A /* ViewController.swift in Sources */,
-				DB9931881DB7AD6100FF5A9A /* ApiKey.swift in Sources */,
+				DB9931881DB7AD6100FF5A9A /* Api.swift in Sources */,
 				DB99318A1DB7B00A00FF5A9A /* Network.swift in Sources */,
 				DB9931761DB7ACD600FF5A9A /* AppDelegate.swift in Sources */,
 			);
@@ -190,6 +265,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -240,6 +316,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -267,7 +344,9 @@
 		};
 		DB9931851DB7ACD600FF5A9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F82783C3F700E91EE2632C93 /* Pods-MeetupTech.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JA52596255;
 				INFOPLIST_FILE = MeetupTech/Info.plist;
@@ -280,7 +359,9 @@
 		};
 		DB9931861DB7ACD600FF5A9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52C2ADEF171422A7671F225D /* Pods-MeetupTech.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JA52596255;
 				INFOPLIST_FILE = MeetupTech/Info.plist;
@@ -310,6 +391,7 @@
 				DB9931861DB7ACD600FF5A9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
