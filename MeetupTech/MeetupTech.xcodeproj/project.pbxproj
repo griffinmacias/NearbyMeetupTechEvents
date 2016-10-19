@@ -13,6 +13,7 @@
 		DB99317D1DB7ACD600FF5A9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB99317C1DB7ACD600FF5A9A /* Assets.xcassets */; };
 		DB9931801DB7ACD600FF5A9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB99317E1DB7ACD600FF5A9A /* LaunchScreen.storyboard */; };
 		DB9931881DB7AD6100FF5A9A /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9931871DB7AD6100FF5A9A /* ApiKey.swift */; };
+		DB99318A1DB7B00A00FF5A9A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9931891DB7B00A00FF5A9A /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DB99317F1DB7ACD600FF5A9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB9931811DB7ACD600FF5A9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB9931871DB7AD6100FF5A9A /* ApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		DB9931891DB7B00A00FF5A9A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				DB9931751DB7ACD600FF5A9A /* AppDelegate.swift */,
 				DB9931771DB7ACD600FF5A9A /* ViewController.swift */,
 				DB9931871DB7AD6100FF5A9A /* ApiKey.swift */,
+				DB9931891DB7B00A00FF5A9A /* Network.swift */,
 				DB9931791DB7ACD600FF5A9A /* Main.storyboard */,
 				DB99317C1DB7ACD600FF5A9A /* Assets.xcassets */,
 				DB99317E1DB7ACD600FF5A9A /* LaunchScreen.storyboard */,
@@ -142,6 +145,7 @@
 			files = (
 				DB9931781DB7ACD600FF5A9A /* ViewController.swift in Sources */,
 				DB9931881DB7AD6100FF5A9A /* ApiKey.swift in Sources */,
+				DB99318A1DB7B00A00FF5A9A /* Network.swift in Sources */,
 				DB9931761DB7ACD600FF5A9A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
