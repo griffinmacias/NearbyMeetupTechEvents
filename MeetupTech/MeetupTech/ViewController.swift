@@ -17,11 +17,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupTableView()
         self.setupLocationManager()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func setupTableView() {
+        self.meetupTableView.delegate = self
+        self.meetupTableView.dataSource = self
+        self.meetupTableView.register(UINib(nibName: "MeetupTableViewCell", bundle: nil), forCellReuseIdentifier: "MeetupCell")
     }
     
     func setupLocationManager() {
@@ -32,8 +39,10 @@ class ViewController: UIViewController {
     }
     
     func fetchTechEvents(location: CLLocationCoordinate2D) {
-        Network.sharedInstance.getTechEvents(latitude: location.latitude, longitude: location.longitude) { (events) in
-            print("Ok in the vc we are getting events in! \(events)")
+        Network.sharedInstance.getTechEvents(latitude: location.latitude, longitude: location.longitude) { (meetups) in
+            print("Ok in the vc we are getting events in! \(meetups)")
+            self.meetups = meetups
+            self.meetupTableView.reloadData()
         }
     }
 }
@@ -49,7 +58,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath) as! MeetupTableViewCell
+        let meetup = self.meetups[indexPath.row]
+        cell.name.text = meetup.name
         return cell
     }
 }
