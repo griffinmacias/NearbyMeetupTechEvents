@@ -28,6 +28,8 @@ struct Meetup {
         }
         if let groupDict = json["group"] as? [String: Any] {
             self.group = Group.init(groupDict: groupDict)
+        } else {
+            
         }
     }
 }
@@ -42,8 +44,10 @@ struct Group {
         }
         self.name = name
         if let imageDict = groupDict["group_photo"] as? [String: Any],
-            let imageURL = imageDict["thumb_link"] as? String {
+            let imageURL = imageDict["photo_link"] as? String {
             self.imageURL = URL(string: imageURL)
+        } else {
+            
         }
     }
 }

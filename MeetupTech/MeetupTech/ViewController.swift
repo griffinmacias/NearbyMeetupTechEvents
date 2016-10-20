@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AlamofireImage
 
 class ViewController: UIViewController {
     
@@ -62,12 +63,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let meetup = self.meetups[indexPath.row]
         cell.nameLabel.text = meetup.name
         cell.distanceLabel.text = String(format: "%.2f", meetup.distance) + " mi"
-        cell.addressLabel.text = "\(meetup.venue?.name ?? "TBA")"
+        cell.addressLabel.text = "@ \(meetup.venue?.name ?? "TBA")"
+        cell.groupImageView.image = nil
+        if let imageURL = meetup.group?.imageURL {
+            cell.groupImageView.af_setImage(withURL: imageURL)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 115
+        return 144
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
