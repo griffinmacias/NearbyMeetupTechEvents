@@ -31,6 +31,8 @@ class ViewController: UIViewController {
         self.meetupTableView.delegate = self
         self.meetupTableView.dataSource = self
         self.meetupTableView.register(UINib(nibName: "MeetupTableViewCell", bundle: nil), forCellReuseIdentifier: "MeetupCell")
+        //So you can't see a blank tableView
+        self.meetupTableView.tableFooterView = UIView()
     }
     
     func setupLocationManager() {
@@ -60,12 +62,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath) as! MeetupTableViewCell
         let meetup = self.meetups[indexPath.row]
+        let cell = self.configureMeetupCell(tableView: tableView, indexPath: indexPath, meetup: meetup)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 144
+    }
+    
+    func configureMeetupCell(tableView: UITableView, indexPath: IndexPath, meetup: Meetup) -> MeetupTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath) as! MeetupTableViewCell
+        cell.clearContents()
         cell.nameLabel.text = meetup.name
-        cell.distanceLabel.text = String(format: "%.2f", meetup.distance) + " mi"
+//        cell.distanceLabel.text = String(format: "%.2f", meetup.distance) + " mi"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d"
+        cell.distanceLabel.text = "\(dateFormatter.string(from: meetup.eventDate)))"
         cell.addressLabel.text = "@ \(meetup.venue?.name ?? "TBA")"
-        cell.groupImageView.image = nil
         if let imageURL = meetup.group?.imageURL {
             cell.groupImageView.af_setImage(withURL: imageURL)
         } else {
@@ -74,14 +88,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.groupImageView.image = groupIcon?.image(with: CGSize(width: 50, height: 50))
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 144
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
     }
 }
 

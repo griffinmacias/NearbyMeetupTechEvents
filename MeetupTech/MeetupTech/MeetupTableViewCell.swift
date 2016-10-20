@@ -25,4 +25,12 @@ class MeetupTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func clearContents() {
+        self.nameLabel.text = ""
+        self.addressLabel.text = ""
+        self.distanceLabel.text = ""
+        self.imageView?.image = nil
+    }
+
+    
 }
