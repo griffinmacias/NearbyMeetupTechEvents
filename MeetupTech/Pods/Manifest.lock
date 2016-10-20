@@ -2,15 +2,20 @@ PODS:
   - Alamofire (4.0.1)
   - AlamofireImage (3.1.0):
     - Alamofire (~> 4.0)
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
+    - FontAwesomeKit/Core
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - AlamofireImage (~> 3.1)
+  - FontAwesomeKit/FontAwesome
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
+  FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
 
-PODFILE CHECKSUM: 3240b857ec4a607e827fdd21ea6c79477089651f
+PODFILE CHECKSUM: 35e60869e16190300ef35e6daae120b42fcfce24
 
 COCOAPODS: 1.1.0
