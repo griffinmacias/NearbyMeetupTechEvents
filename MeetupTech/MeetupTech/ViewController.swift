@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import AlamofireImage
+import FontAwesomeKit
 
 class ViewController: UIViewController {
     
@@ -67,6 +68,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.groupImageView.image = nil
         if let imageURL = meetup.group?.imageURL {
             cell.groupImageView.af_setImage(withURL: imageURL)
+        } else {
+            let groupIcon = FAKFontAwesome.groupIcon(withSize: 50)
+            groupIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray)
+            cell.groupImageView.image = groupIcon?.image(with: CGSize(width: 50, height: 50))
         }
         return cell
     }

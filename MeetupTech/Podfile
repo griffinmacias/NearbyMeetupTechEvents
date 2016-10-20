@@ -7,5 +7,5 @@ target 'MeetupTech' do
   # Pods for MeetupTech
 	pod 'Alamofire', '~> 4.0'
 	pod 'AlamofireImage', '~> 3.1'
-	pod 'FontAwesomeKit/FontAwesome'
+	pod 'FontAwesomeKit/FontAwesome', git: 'https://github.com/PrideChung/FontAwesomeKit.git'
 end
