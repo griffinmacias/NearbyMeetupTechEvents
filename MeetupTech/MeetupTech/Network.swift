@@ -14,12 +14,13 @@ final class Network {
     static let sharedInstance = Network()
     private init() {} //Prevents others from using the default () init
     
-    func getTechEvents(latitude: Double, longitude: Double, completion: @escaping ([Meetup]) -> Void)  {
+    func getTechEvents(latitude: Double, longitude: Double, completion: @escaping ([Meetup]?) -> Void)  {
         Alamofire.request(Api.url, parameters: ["key": Api.key, "category": Api.tech, "lat": latitude, "lon": longitude, "radius": Api.radius, "fields": "group_photo"])
         .validate()
         .responseJSON { (response) in
             guard response.result.isSuccess else {
                 print("Error while fetching results: \(response.result.error)")
+                completion(nil)
                 return
             }
             if let value = response.result.value as? [String: Any] {
@@ -32,11 +33,8 @@ final class Network {
                         }
                     }
                     completion(meetups)
-                } else {
-                 assert(false, "Not receiving expected types in JSON parsing of Meetups")
                 }
             }
         }
-        
     }
 }

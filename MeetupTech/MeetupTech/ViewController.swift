@@ -21,11 +21,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.setupTableView()
         self.setupLocationManager()
+        if let currentLocation = self.locationManager.location {
+            self.fetchTechEvents(location: currentLocation.coordinate)
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //MARK: Setup Methods
     
     func setupTableView() {
         self.meetupTableView.delegate = self
@@ -42,14 +47,25 @@ class ViewController: UIViewController {
         self.locationManager.startUpdatingLocation()
     }
     
+    //MARK: Network Methods
+    
     func fetchTechEvents(location: CLLocationCoordinate2D) {
-        Network.sharedInstance.getTechEvents(latitude: location.latitude, longitude: location.longitude) { (meetups) in
-            print("Ok in the vc we are getting events in! \(meetups)")
-            self.meetups = meetups
-            self.meetupTableView.reloadData()
+        Network.sharedInstance.getTechEvents(latitude: location.latitude, longitude: location.longitude) { (meetupArray) in
+            if let meetups = meetupArray {
+                self.meetups = meetups
+                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.2, delay: 0.2, options: .transitionCrossDissolve, animations: {
+                    self.meetupTableView.reloadData()
+                    self.view.layoutIfNeeded()
+                    }, completion: nil)
+            } else {
+                print("ERROR ERROR")
+            }
         }
     }
 }
+
+//MARK TableView Methods
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -75,11 +91,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath) as! MeetupTableViewCell
         cell.clearContents()
         cell.nameLabel.text = meetup.name
-//        cell.distanceLabel.text = String(format: "%.2f", meetup.distance) + " mi"
+        cell.distanceLabel.text = String(format: "%.2f", meetup.distance) + " mi"
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d"
-        cell.distanceLabel.text = "\(dateFormatter.string(from: meetup.eventDate)))"
-        cell.addressLabel.text = "@ \(meetup.venue?.name ?? "TBA")"
+        dateFormatter.dateFormat = "MMM d, H:mm a"
+        cell.eventDateTimeLabel.text = "\(dateFormatter.string(from: meetup.eventDate))"
+        cell.venueNameLabel.text = "@ \(meetup.venue?.name ?? "TBA")"
         if let imageURL = meetup.group?.imageURL {
             cell.groupImageView.af_setImage(withURL: imageURL)
         } else {
@@ -91,18 +107,30 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: CLLocation Methods 
+
 extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Locations! \(locations.last?.coordinate)")
-        if let coordinate = locations.last?.coordinate {
-            self.fetchTechEvents(location: coordinate)
+        if let _ = locations.last?.coordinate {
             self.locationManager.stopUpdatingLocation()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            if let currentLocation = manager.location?.coordinate {
+                self.fetchTechEvents(location: currentLocation)
+            }
+        default:
+            break
+        }
     }
 }
 

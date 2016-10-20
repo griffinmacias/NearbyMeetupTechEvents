@@ -11,8 +11,9 @@ import UIKit
 class MeetupTableViewCell: UITableViewCell {
     @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var venueNameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var eventDateTimeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +28,8 @@ class MeetupTableViewCell: UITableViewCell {
     
     func clearContents() {
         self.nameLabel.text = ""
-        self.addressLabel.text = ""
+        self.venueNameLabel.text = ""
+        self.eventDateTimeLabel.text = ""
         self.distanceLabel.text = ""
         self.imageView?.image = nil
     }

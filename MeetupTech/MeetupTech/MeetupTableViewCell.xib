@@ -31,12 +31,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTP-XI-fdC">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nDu-uF-VHY">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-r9-2mU">
+                                <frame key="frameInset" minY="65"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nDu-uF-VHY">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZm-8R-pmX">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -44,13 +55,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nDu-uF-VHY" firstAttribute="width" secondItem="IgY-4q-z5m" secondAttribute="width" id="4hX-3C-0kj"/>
-                            <constraint firstItem="nDu-uF-VHY" firstAttribute="centerY" secondItem="IgY-4q-z5m" secondAttribute="centerY" id="RlY-L8-OCw"/>
+                            <constraint firstItem="zZm-8R-pmX" firstAttribute="centerY" secondItem="IgY-4q-z5m" secondAttribute="centerY" id="Lcj-sU-6xX"/>
+                            <constraint firstItem="zZm-8R-pmX" firstAttribute="centerX" secondItem="IgY-4q-z5m" secondAttribute="centerX" id="TPi-qw-cP6"/>
+                            <constraint firstItem="Z6l-r9-2mU" firstAttribute="top" secondItem="zZm-8R-pmX" secondAttribute="bottom" constant="8" id="Vol-qX-JxW"/>
                             <constraint firstItem="Njd-06-wub" firstAttribute="centerY" secondItem="IgY-4q-z5m" secondAttribute="centerY" multiplier="0.25" id="bZK-cT-MUY"/>
+                            <constraint firstItem="tTP-XI-fdC" firstAttribute="top" secondItem="nDu-uF-VHY" secondAttribute="bottom" constant="3" id="d59-I3-7Mq"/>
                             <constraint firstItem="tTP-XI-fdC" firstAttribute="width" secondItem="IgY-4q-z5m" secondAttribute="width" id="lat-ZS-2nV"/>
+                            <constraint firstItem="zZm-8R-pmX" firstAttribute="width" secondItem="IgY-4q-z5m" secondAttribute="width" id="lrC-z0-i2E"/>
                             <constraint firstItem="nDu-uF-VHY" firstAttribute="centerX" secondItem="IgY-4q-z5m" secondAttribute="centerX" id="nKI-Ff-wrJ"/>
                             <constraint firstItem="tTP-XI-fdC" firstAttribute="centerX" secondItem="IgY-4q-z5m" secondAttribute="centerX" id="qKF-t9-xrN"/>
-                            <constraint firstItem="tTP-XI-fdC" firstAttribute="centerY" secondItem="IgY-4q-z5m" secondAttribute="centerY" multiplier="1.75" id="sFA-Zv-0ln"/>
                             <constraint firstItem="Njd-06-wub" firstAttribute="width" secondItem="IgY-4q-z5m" secondAttribute="width" id="voL-3B-xoa"/>
+                            <constraint firstItem="nDu-uF-VHY" firstAttribute="top" secondItem="zZm-8R-pmX" secondAttribute="bottom" constant="3" id="wJQ-q1-OAe"/>
                             <constraint firstItem="Njd-06-wub" firstAttribute="centerX" secondItem="IgY-4q-z5m" secondAttribute="centerX" id="yQy-D2-QLs"/>
                         </constraints>
                     </view>
@@ -66,10 +81,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="addressLabel" destination="nDu-uF-VHY" id="i8K-Ot-ZQt"/>
                 <outlet property="distanceLabel" destination="tTP-XI-fdC" id="gWN-8O-KaU"/>
+                <outlet property="eventDateTimeLabel" destination="zZm-8R-pmX" id="EUO-Li-pdG"/>
                 <outlet property="groupImageView" destination="aaC-4l-5wZ" id="pu9-rh-rHj"/>
                 <outlet property="nameLabel" destination="Njd-06-wub" id="fl2-MS-chU"/>
+                <outlet property="venueNameLabel" destination="nDu-uF-VHY" id="udo-5v-0Rn"/>
             </connections>
             <point key="canvasLocation" x="-91" y="-17"/>
         </tableViewCell>
