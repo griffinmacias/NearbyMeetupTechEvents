@@ -18,10 +18,10 @@ final class Network {
         Alamofire.request(Api.url, parameters: [
             "key": Api.key,
             "category": Api.tech,
-            "lat": latitude,
-            "lon": longitude,
             "radius": Api.radius,
-            "fields": Api.fields
+            "fields": Api.fields,
+            "lat": latitude,
+            "lon": longitude
             ])
         .validate()
         .responseJSON { (response) in
