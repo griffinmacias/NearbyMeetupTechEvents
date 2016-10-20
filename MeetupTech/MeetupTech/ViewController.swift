@@ -59,7 +59,6 @@ class ViewController: UIViewController {
     //MARK: Network Methods
     
     func updateTechEvents() {
-        self.locationManager.startUpdatingLocation()
         self.fetchTechEvents()
     }
     
@@ -116,11 +115,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.eventDateTimeLabel.text = "\(dateFormatter.string(from: meetup.eventDate))"
         cell.venueNameLabel.text = "@ \(meetup.venue?.name ?? "TBA")"
         if let imageURL = meetup.group?.imageURL {
+            //Personally that it looked better not having a placeholder image
             cell.groupImageView.af_setImage(withURL: imageURL)
         } else {
             let groupIcon = FAKFontAwesome.groupIcon(withSize: 50)
             groupIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray)
-            cell.groupImageView.image = groupIcon?.image(with: CGSize(width: 50, height: 50))
+            let groupIconImage = groupIcon?.image(with: CGSize(width: 50, height: 50))
+            cell.groupImageView.image = groupIconImage
         }
         return cell
     }
@@ -130,14 +131,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController: CLLocationManagerDelegate {
     
-    func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-        print("Did resume Location Updates")
-        self.fetchTechEvents()
-    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Locations! \(locations.last?.coordinate)")
-        manager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -148,7 +144,7 @@ extension ViewController: CLLocationManagerDelegate {
         switch status {
         case .authorizedWhenInUse:
             self.activityIndicatorView.startAnimating()
-            self.fetchTechEvents()
+            self.updateTechEvents()
         default:
             break
         }
