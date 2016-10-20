@@ -15,7 +15,14 @@ final class Network {
     private init() {} //Prevents others from using the default () init
     
     func getTechEvents(latitude: Double, longitude: Double, completion: @escaping ([Meetup]?) -> Void)  {
-        Alamofire.request(Api.url, parameters: ["key": Api.key, "category": Api.tech, "lat": latitude, "lon": longitude, "radius": Api.radius, "fields": "group_photo"])
+        Alamofire.request(Api.url, parameters: [
+            "key": Api.key,
+            "category": Api.tech,
+            "lat": latitude,
+            "lon": longitude,
+            "radius": Api.radius,
+            "fields": Api.fields
+            ])
         .validate()
         .responseJSON { (response) in
             guard response.result.isSuccess else {

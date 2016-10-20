@@ -9,11 +9,13 @@
 import Foundation
 
 struct Meetup {
+    
     var name: String
     var distance: Double
     var eventDate: Date
     var group: Group?
     var venue: Venue?
+    
     init?(json: [String: Any]) {
         guard let name = json["name"] as? String,
             let distance = json["distance"] as? Double,
@@ -35,6 +37,7 @@ struct Meetup {
 }
 
 struct Group {
+    
     var imageURL: URL?
     var name: String
     
@@ -53,6 +56,7 @@ struct Group {
 }
 
 struct Venue {
+    
     var longitude: Double
     var latitude: Double
     var address: String?
@@ -60,10 +64,10 @@ struct Venue {
     var city: String?
     
     init?(venueDict: [String: Any]) {
-        guard let latitude = venueDict["lat"] as? Double, let longitude = venueDict["lon"] as? Double else {
+        guard let latitude = venueDict["lat"] as? Double,
+            let longitude = venueDict["lon"] as? Double else {
             return nil
         }
-        
         self.longitude = longitude
         self.latitude = latitude
         if let address = venueDict["address_1"] as? String {
@@ -76,5 +80,4 @@ struct Venue {
             self.city = city
         }
     }
-    
 }

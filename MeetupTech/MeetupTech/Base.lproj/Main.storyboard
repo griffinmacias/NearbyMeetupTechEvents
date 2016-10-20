@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Nearby Tech Meetups-->
+        <!--Upcoming Tech Meetups Nearby-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MeetupTech" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <constraint firstItem="oKA-QL-Cab" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="eFr-DI-AMJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Nearby Tech Meetups" id="xDq-vY-4r8"/>
+                    <navigationItem key="navigationItem" title="Upcoming Tech Meetups Nearby" id="xDq-vY-4r8"/>
                     <connections>
                         <outlet property="meetupTableView" destination="oKA-QL-Cab" id="grr-Au-Aes"/>
                     </connections>

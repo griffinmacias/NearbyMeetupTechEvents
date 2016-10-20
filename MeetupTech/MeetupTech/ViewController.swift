@@ -21,9 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.setupTableView()
         self.setupLocationManager()
-        if let currentLocation = self.locationManager.location {
-            self.fetchTechEvents(location: currentLocation.coordinate)
-        }
+        self.fetchTechEvents()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,12 +30,19 @@ class ViewController: UIViewController {
     
     //MARK: Setup Methods
     
+    func updateTechEvents() {
+        self.fetchTechEvents()
+    }
+    
     func setupTableView() {
         self.meetupTableView.delegate = self
         self.meetupTableView.dataSource = self
         self.meetupTableView.register(UINib(nibName: "MeetupTableViewCell", bundle: nil), forCellReuseIdentifier: "MeetupCell")
         //So you can't see a blank tableView
         self.meetupTableView.tableFooterView = UIView()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.updateTechEvents), for: .valueChanged)
+        self.meetupTableView.refreshControl = refreshControl
     }
     
     func setupLocationManager() {
@@ -49,17 +54,20 @@ class ViewController: UIViewController {
     
     //MARK: Network Methods
     
-    func fetchTechEvents(location: CLLocationCoordinate2D) {
-        Network.sharedInstance.getTechEvents(latitude: location.latitude, longitude: location.longitude) { (meetupArray) in
-            if let meetups = meetupArray {
-                self.meetups = meetups
-                self.view.layoutIfNeeded()
-                UIView.animate(withDuration: 0.2, delay: 0.2, options: .transitionCrossDissolve, animations: {
-                    self.meetupTableView.reloadData()
+    func fetchTechEvents() {
+        if let currentLocation = self.locationManager.location?.coordinate {
+            Network.sharedInstance.getTechEvents(latitude: currentLocation.latitude, longitude: currentLocation.longitude) { (meetupArray) in
+                if let meetups = meetupArray {
+                    self.meetups = meetups
+                    self.meetupTableView.refreshControl?.endRefreshing()
                     self.view.layoutIfNeeded()
-                    }, completion: nil)
-            } else {
-                print("ERROR ERROR")
+                    UIView.animate(withDuration: 0.2, delay: 0.2, options: .transitionCrossDissolve, animations: {
+                        self.meetupTableView.reloadData()
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+                } else {
+                    print("ERROR ERROR")
+                }
             }
         }
     }
@@ -93,7 +101,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = meetup.name
         cell.distanceLabel.text = String(format: "%.2f", meetup.distance) + " mi"
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, H:mm a"
+        dateFormatter.dateFormat = "MMM d, h:mm a"
         cell.eventDateTimeLabel.text = "\(dateFormatter.string(from: meetup.eventDate))"
         cell.venueNameLabel.text = "@ \(meetup.venue?.name ?? "TBA")"
         if let imageURL = meetup.group?.imageURL {
@@ -107,7 +115,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//MARK: CLLocation Methods 
+//MARK: CLLocation Methods
 
 extension ViewController: CLLocationManagerDelegate {
     
@@ -125,9 +133,7 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse:
-            if let currentLocation = manager.location?.coordinate {
-                self.fetchTechEvents(location: currentLocation)
-            }
+            self.fetchTechEvents()
         default:
             break
         }
