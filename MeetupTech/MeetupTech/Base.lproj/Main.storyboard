@@ -21,17 +21,21 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oKA-QL-Cab">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ejZ-ly-zgG"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oKA-QL-Cab" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DRW-8k-ivD"/>
                             <constraint firstItem="oKA-QL-Cab" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="J3X-yi-20K"/>
                             <constraint firstItem="oKA-QL-Cab" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pjt-ZO-ZAD"/>
+                            <constraint firstItem="ejZ-ly-zgG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dkv-HE-Lfx"/>
                             <constraint firstItem="oKA-QL-Cab" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="eFr-DI-AMJ"/>
+                            <constraint firstItem="ejZ-ly-zgG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="geX-0J-hS7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Upcoming Tech Meetups Nearby" id="xDq-vY-4r8"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="ejZ-ly-zgG" id="FYc-Ee-MA6"/>
                         <outlet property="meetupTableView" destination="oKA-QL-Cab" id="grr-Au-Aes"/>
                     </connections>
                 </viewController>
@@ -44,7 +48,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8i5-i9-rsO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SRd-Zw-Hk1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SRd-Zw-Hk1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

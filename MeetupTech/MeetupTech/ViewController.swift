@@ -12,13 +12,14 @@ import AlamofireImage
 import FontAwesomeKit
 
 class ViewController: UIViewController {
-    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var meetupTableView: UITableView!
     let locationManager: CLLocationManager = CLLocationManager()
     var meetups: [Meetup] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupActivityIndicatorView()
         self.setupTableView()
         self.setupLocationManager()
         self.fetchTechEvents()
@@ -30,8 +31,9 @@ class ViewController: UIViewController {
     
     //MARK: Setup Methods
     
-    func updateTechEvents() {
-        self.fetchTechEvents()
+    func setupActivityIndicatorView() {
+        self.activityIndicatorView.color = UIColor.gray
+        self.activityIndicatorView.startAnimating()
     }
     
     func setupTableView() {
@@ -47,6 +49,7 @@ class ViewController: UIViewController {
     
     func setupLocationManager() {
         self.locationManager.delegate = self
+        self.locationManager.pausesLocationUpdatesAutomatically = true
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
@@ -54,9 +57,15 @@ class ViewController: UIViewController {
     
     //MARK: Network Methods
     
+    func updateTechEvents() {
+        self.locationManager.startUpdatingLocation()
+        self.fetchTechEvents()
+    }
+    
     func fetchTechEvents() {
         if let currentLocation = self.locationManager.location?.coordinate {
             Network.sharedInstance.getTechEvents(latitude: currentLocation.latitude, longitude: currentLocation.longitude) { (meetupArray) in
+                self.activityIndicatorView.stopAnimating()
                 if let meetups = meetupArray {
                     self.meetups = meetups
                     self.meetupTableView.refreshControl?.endRefreshing()
@@ -65,10 +74,10 @@ class ViewController: UIViewController {
                         self.meetupTableView.reloadData()
                         self.view.layoutIfNeeded()
                         }, completion: nil)
-                } else {
-                    print("ERROR ERROR")
                 }
             }
+        } else {
+            self.activityIndicatorView.stopAnimating()
         }
     }
 }
@@ -119,11 +128,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController: CLLocationManagerDelegate {
     
+    func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+        print("Did resume Location Updates")
+        self.fetchTechEvents()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Locations! \(locations.last?.coordinate)")
-        if let _ = locations.last?.coordinate {
-            self.locationManager.stopUpdatingLocation()
-        }
+        manager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -133,6 +145,7 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse:
+            self.activityIndicatorView.startAnimating()
             self.fetchTechEvents()
         default:
             break
