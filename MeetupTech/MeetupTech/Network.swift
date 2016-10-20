@@ -31,17 +31,16 @@ final class Network {
                 completion(nil)
                 return
             }
-            if let value = response.result.value as? [String: Any] {
+            if let value = response.result.value as? [String: Any], let json = value["results"] as? [Any] {
                 print("Value is in! \(value)")
-                if let json = value["results"] as? [Any] {
-                    var meetups: [Meetup] = []
-                    for dict in json {
-                        if let meetupDict = dict as? [String: Any], let meetup = Meetup.init(json: meetupDict) {
-                            meetups.append(meetup)
-                        }
+                var meetups: [Meetup] = []
+                for dict in json {
+                    if let meetupDict = dict as? [String: Any],
+                        let meetup = Meetup.init(json: meetupDict) {
+                        meetups.append(meetup)
                     }
-                    completion(meetups)
                 }
+                completion(meetups)
             }
         }
     }
