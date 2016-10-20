@@ -15,6 +15,7 @@ final class Network {
     private init() {} //Prevents others from using the default () init
     
     func getTechEvents(latitude: Double, longitude: Double, completion: @escaping ([Meetup]?) -> Void)  {
+        assert(Api.key == "YOUR-API-KEY" ? false : true, "Please enter API Key in the Api.Swift")
         Alamofire.request(Api.url, parameters: [
             "key": Api.key,
             "category": Api.tech,
