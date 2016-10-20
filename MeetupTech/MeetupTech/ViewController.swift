@@ -12,6 +12,7 @@ import AlamofireImage
 import FontAwesomeKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var meetupTableView: UITableView!
     let locationManager: CLLocationManager = CLLocationManager()
@@ -66,9 +67,9 @@ class ViewController: UIViewController {
         if let currentLocation = self.locationManager.location?.coordinate {
             Network.sharedInstance.getTechEvents(latitude: currentLocation.latitude, longitude: currentLocation.longitude) { (meetupArray) in
                 self.activityIndicatorView.stopAnimating()
+                self.meetupTableView.refreshControl?.endRefreshing()
                 if let meetups = meetupArray {
                     self.meetups = meetups
-                    self.meetupTableView.refreshControl?.endRefreshing()
                     self.view.layoutIfNeeded()
                     UIView.animate(withDuration: 0.2, delay: 0.2, options: .transitionCrossDissolve, animations: {
                         self.meetupTableView.reloadData()
@@ -77,6 +78,7 @@ class ViewController: UIViewController {
                 }
             }
         } else {
+            self.meetupTableView.refreshControl?.endRefreshing()
             self.activityIndicatorView.stopAnimating()
         }
     }
